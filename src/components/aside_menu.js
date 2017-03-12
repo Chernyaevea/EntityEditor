@@ -8,14 +8,39 @@ class AsideMenu extends Component {
     this.props.fetchDepartment();
     this.props.fetchEmployee();
   }
-  // renderMenu() {
-  //   return
-  //       return this.props.departments.
-  // }
+  renderMenu() {
+    var department;
+    if (this.props.departments != null){
+      return (
+        <div>
+          <ul className="list-group">
+            <h4> Departments </h4>
+            {this.props.departments.map((department) => {
+              return (
+                <li className="list-group-item">
+                  {department.name}
+                </li>
+                )}
+            )}
+            <h4> Employees </h4>
+            {this.props.employees.map((employee) => {
+              return (
+                <li className="list-group-item">
+                  {employee.firstName}
+                  {employee.lastName}
+                </li>
+                )}
+            )}
+            </ul>
+        </div>
+      )
+    }
+  }
 
   render() {
     return (
       <div className="aside-menu">
+        {this.renderMenu()}
       </div>
     );
   }
